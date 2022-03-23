@@ -24,17 +24,13 @@ const daysDifference = (startDate: Date, endDate: Date): number => {
     return diffDays;
 };
 
-console.log('hello from deno!');
-
 const route = await request<Route>(REQUEST_URL, { headers: { 'X-Currency': 'CZK' }});
 
 assert(route.bookable, 'The given route is not bookable, exiting', 1);
 
 assert(route.freeSeatsCount > 0, 'The given route has less than one free seats, exiting', 2);
-console.log(route);
 
 const priceClass = route.priceClasses.find(priceClass => priceClass.seatClassKey === SEAT_CLASS);
-// console.log(priceClass);
 
 assert(priceClass, 'The given route doesnt contain the specified seat class, exiting', 3);
 
